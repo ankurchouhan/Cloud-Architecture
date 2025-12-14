@@ -2,19 +2,22 @@
 
 This project demonstrates a **scalable, production-grade streaming architecture** built on **Google Cloud Platform (GCP)** using a mix of **serverless and compute services**.
 
-## 🚀 Overview
-
-The system simulates a video-on-demand (VOD) platform — similar to Netflix or Apple TV+ — with:
-- User authentication and profiles
-- Video catalog and metadata APIs
-- Media upload, transcoding, and delivery via CDN
-- Real-time analytics and recommendations
-
-## 🧩 Architecture Diagram
 ![GCP](https://img.shields.io/badge/Cloud-Google%20Cloud-blue?logo=googlecloud)
 ![Architecture](https://img.shields.io/badge/Architecture-Serverless%20%2B%20Compute-orange)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Cloud%20Build%20%2B%20Terraform-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+---
+
+## 🚀 Overview
+
+This system simulates a **video-on-demand (VOD) platform** — similar to Netflix or Apple TV+ — built on GCP with:
+- 🔐 **User authentication** and profiles
+- 🎞️ **Video catalog & metadata APIs**
+- ☁️ **Media upload, transcoding, and CDN delivery**
+- 📊 **Real-time analytics and ML-based recommendations**
+
+---
 
 ## 🗂️ Folder Overview
 
@@ -54,18 +57,6 @@ streaming-platform-gcp-architecture/
 └── notebooks/
     ├── recommendation_model.ipynb      # Vertex AI recommendation demo
     └── analytics_demo.ipynb            # Data insights visualization
-
-### Core Components
-
-| Layer | GCP Service | Purpose |
-|--------|--------------|----------|
-| Auth / API | Cloud Run | Stateless microservices |
-| Metadata | Firestore | NoSQL metadata store |
-| Billing | Cloud SQL | Relational transactions |
-| Transcoding | Transcoder API | Media processing |
-| Delivery | Media CDN + Cloud Storage | Global streaming |
-| Analytics | Pub/Sub + BigQuery | Event pipeline |
-| Recommendations | Vertex AI | ML-driven personalization |
 
 ## 🏗️ Infrastructure
 
