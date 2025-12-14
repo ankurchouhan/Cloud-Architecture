@@ -11,34 +11,21 @@ The system simulates a video-on-demand (VOD) platform — similar to Netflix or 
 - Real-time analytics and recommendations
 
 ## 🧩 Architecture Diagram
-streaming-platform-gcp-architecture/
-│
-├── README.md
-├── architecture/
-│   ├── high-level-diagram.png
-│   ├── serverless-vs-compute.png
-│   └── gcp-service-map.md
-│
-├── backend/
-│   ├── auth-service/
-│   ├── catalog-service/
-│   ├── playback-service/
-│   ├── Dockerfile
-│   └── docker-compose.yml
-│
-├── infra/
-│   ├── terraform/
-│   ├── gcp-setup.md
-│   └── ci-cd-pipeline.yaml
-│
-├── data/
-│   ├── firestore-schema.json
-│   ├── pubsub-topics.yaml
-│   └── bigquery-dataset.sql
-│
-└── notebooks/
-    ├── recommendation_model.ipynb
-    └── analytics_demo.ipynb
+![GCP](https://img.shields.io/badge/Cloud-Google%20Cloud-blue?logo=googlecloud)
+![Architecture](https://img.shields.io/badge/Architecture-Serverless%20%2B%20Compute-orange)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-Cloud%20Build%20%2B%20Terraform-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+## 📚 Table of Contents
+1. [Overview](#-overview)
+2. [Architecture Diagram](#-architecture-diagram)
+3. [Infrastructure](#-infrastructure)
+4. [Data Flow](#-example-data-flow)
+5. [Tech Stack](#-tech-stack)
+6. [Setup Guide](#-setup-guide)
+7. [Author](#-author)
+
+
 
 ![architecture-diagram](architecture/high-level-diagram.png)
 
