@@ -1,4 +1,4 @@
-# 🎬 Cloud-Native Streaming Platform (Netflix / Apple TV+ Style)
+# 🎬 Production Base; Cloud-Native Streaming Platform (Netflix / Apple TV)
 
 This project demonstrates a **scalable, production-grade streaming architecture** built on **Google Cloud Platform (GCP)** using a mix of **serverless and compute services**.
 
