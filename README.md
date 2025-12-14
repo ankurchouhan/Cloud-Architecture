@@ -46,6 +46,29 @@ It’s composed of **seven cooperating layers**, each optimized for cost, perfor
 
 ---
 
+### 📊 Final Cost Comparison (Monthly)
+
+| Users | GCP Managed Infrastructure | Hyperscale Custom Infrastructure |
+|------:|----------------------------|----------------------------------|
+| **1 Million Users** | ~$1.5M / month | ~$300K / month |
+| **1 Billion Users** | ~$500M / month | ~$30M – $80M / month |
+
+---
+
+### 🧠 What This Comparison Shows
+
+- **GCP Managed Infrastructure**
+  - Fast to build and operate
+  - Ideal up to **tens of millions of users**
+  - Cost dominated by **bandwidth (CDN + egress)**
+
+- **Hyperscale Custom Infrastructure (Netflix / Apple style)**
+  - Requires massive engineering investment
+  - Uses **private CDN, ISP peering, custom hardware**
+  - Achieves **10–15× lower bandwidth cost** at scale
+
+---
+
 ## 🗂️ Repository Structure
 
 A well-structured repository mirrors the system’s modular design. Each directory represents a distinct concern within the ecosystem.
