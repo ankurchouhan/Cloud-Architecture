@@ -53,7 +53,7 @@ A well-structured repository mirrors the system’s modular design. Each directo
 ## 🗂️ Folder Overview
 
 📁 **architecture/** — Diagrams & documentation  
-  ↳ [gcp-service-map.md](architecture/gcp-service-map.md) — Full GCP service catalog and responsibilities  
+  ↳ [gcp-service-map.md](gcp-service-map.md) — Full GCP service catalog and responsibilities  
 📁 **backend/** — Microservices (Auth, Catalog, Playback)  
 📁 **infra/** — Terraform, CI/CD pipelines, GCP setup  
 📁 **data/** — Firestore schemas, Pub/Sub topics, BigQuery SQL  
