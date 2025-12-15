@@ -1,3 +1,5 @@
+```bash
+
 your-project/
 ├─ docker-compose.yml                       # 🐳 Local dev stack (Postgres, Redis, mock services)
 ├─ .env                                     # Environment vars for local Docker
