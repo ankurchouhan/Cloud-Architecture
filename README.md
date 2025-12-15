@@ -91,7 +91,7 @@ All the diagrams and flows live in the `map/` directory.
 
 ### 📁 `map/` — CI/CD Diagrams & Documentation
 
-- [`map/Full-Cloud-CI-CD-Map.md`](map/Full-Cloud-CI-CD-Map.md)  
+- [`Multi-cloud-CI-CD-map.md`](Multi-cloud-CI-CD-map.md)  
   **1. Multi-Cloud CI/CD (Compute + Serverless)**  
   - Covers **AWS + GCP + Azure** end-to-end  
   - Includes:
@@ -101,7 +101,7 @@ All the diagrams and flows live in the `map/` directory.
     - Serverless CI/CD (Lambda, Cloud Run, Azure Functions)
     - Third-party integrations (Auth0, Stripe, SendGrid, Datadog, Sentry, Segment, etc.)
    
-- [`map/aws-native-map.md`](map/aws-native-map.md)  
+- [`AWS-native-map.md`](AWS-native-map.md)  
   **2. AWS-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / CodeCommit  
@@ -112,7 +112,7 @@ All the diagrams and flows live in the `map/` directory.
       - Serverless to **Lambda**
     - Observability: CloudWatch + optional Datadog/Sentry hooks
 
-- [`map/gcp-native-map.md`](map/gcp-native-map.md)  
+- [`GCP-native-map.md`](map/GCP-native-map.md)  
   **3. GCP-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / Cloud Source Repositories  
@@ -123,7 +123,7 @@ All the diagrams and flows live in the `map/` directory.
       - Serverless to **Cloud Run** / Cloud Functions
     - Observability: Cloud Monitoring + Cloud Logging
 
-- [`map/azure-native-map.md`](map/azure-native-map.md)  
+- [`AZURE-native-map.md`](AZURE-native-map.md)  
   **4. Azure-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / Azure Repos  
