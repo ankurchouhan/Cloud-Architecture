@@ -57,23 +57,6 @@ A **cloud-native architecture** that unifies:
 
 ---
 
-## 🗂️ Repository Map
-
-```bash
-streaming-platform/
-├─ frontend/                  # React UI (users, team, admin, dev consoles)
-├─ backend/                   # Auth, Catalog, Playback, Billing microservices
-├─ infrastructure/             # Terraform + Ansible + CI/CD + K8s manifests
-│  ├─ terraform/               # GCP / AWS / Azure modules
-│  ├─ ansible/                 # VM config management
-│  ├─ kubernetes/              # Helm charts, namespaces, ingress
-│  ├─ ci-cd/                   # Cloud Build, CodePipeline, Azure Pipelines, Jenkins
-│  └─ monitoring-logging/      # Prometheus, Grafana, ELK setup
-├─ data/                       # Schemas, pipelines, Pub/Sub, BigQuery models
-├─ docs/                       # Architecture + Infra + CI/CD + Analytics guides
-└─ map/                        # Visual diagrams and CI/CD maps
-
-
 # 1️⃣ Authenticate
 gcloud auth login && gcloud config set project <PROJECT_ID>
 
@@ -88,7 +71,6 @@ gcloud auth login && gcloud config set project <PROJECT_ID>
 
 # 5️⃣ Monitor & Optimize
 kubectl get pods -A
-
 
 
 ---
@@ -121,3 +103,22 @@ This project is released under the **MIT License**, allowing free use and modifi
 Unauthorized reproduction or misrepresentation of this work as a proprietary offering is a violation of copyright and intellectual property law.
 
 © [2025] [Ankur Chouhan / YFS/ Alien LLC]. All rights reserved.
+
+
+## 🗂️ Repository Map
+
+```bash
+streaming-platform/
+├─ frontend/                  # React UI (users, team, admin, dev consoles)
+├─ backend/                   # Auth, Catalog, Playback, Billing microservices
+├─ infrastructure/             # Terraform + Ansible + CI/CD + K8s manifests
+│  ├─ terraform/               # GCP / AWS / Azure modules
+│  ├─ ansible/                 # VM config management
+│  ├─ kubernetes/              # Helm charts, namespaces, ingress
+│  ├─ ci-cd/                   # Cloud Build, CodePipeline, Azure Pipelines, Jenkins
+│  └─ monitoring-logging/      # Prometheus, Grafana, ELK setup
+├─ data/                       # Schemas, pipelines, Pub/Sub, BigQuery models
+├─ docs/                       # Architecture + Infra + CI/CD + Analytics guides
+└─ map/                        # Visual diagrams and CI/CD maps
+
+
