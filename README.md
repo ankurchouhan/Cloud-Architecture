@@ -57,24 +57,6 @@ A **cloud-native architecture** that unifies:
 
 ---
 
-# 1️⃣ Authenticate
-gcloud auth login && gcloud config set project <PROJECT_ID>
-
-# 2️⃣ Provision Infrastructure (Terraform)
-./scripts/terraform-apply.sh
-
-# 3️⃣ Build & Push Containers
-./scripts/build-all-images.sh && ./scripts/push-all-images.sh
-
-# 4️⃣ Deploy to Kubernetes
-./scripts/deploy-k8s.sh
-
-# 5️⃣ Monitor & Optimize
-kubectl get pods -A
-
-
----
-
 ## 💼 Credits & Professional Use
 
 This cloud architecture blueprint is an original design by **[Ankur Chouhan / Alien LLC]**.  
