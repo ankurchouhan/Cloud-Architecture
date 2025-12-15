@@ -91,27 +91,9 @@ streaming-platform-gcp-architecture/
 │   ├── high-level-diagram.png          # Macro system view: edge-to-ML flow
 │   ├── serverless-vs-compute.png       # Workload classification
 │   └── gcp-service-map.md              # Service catalog and responsibilities
-│
-├── backend/
-│   ├── auth-service/                   # Authentication & token issuance
-│   ├── catalog-service/                # Content catalog and metadata API
-│   ├── playback-service/               # Playback control and signed URL generation
-│   ├── Dockerfile                      # Multi-service container build
-│   └── docker-compose.yml              # Local orchestration for testing
-│
-├── infra/
-│   ├── terraform/                      # Infrastructure as Code (modularized)
-│   ├── gcp-setup.md                    # Environment bootstrap documentation
-│   └── ci-cd-pipeline.yaml             # Cloud Build pipeline definition
-│
-├── data/
-│   ├── firestore-schema.json           # Firestore collection schema
-│   ├── pubsub-topics.yaml              # Event topics for analytics and notifications
-│   └── bigquery-dataset.sql            # Analytical data model for user activity
-│
-└── notebooks/
-    ├── recommendation_model.ipynb      # Collaborative filtering ML demo
-    └── analytics_demo.ipynb            # Audience metrics and engagement trends
+
+
+
 
 ## Frontend ; React JS, CSS, Tailwind, Depends on your whatever you want to use.
 ## Backend  ; (GO) Lang, Python, Node Js & Java, Main backend systems design with several languages
@@ -147,7 +129,11 @@ your-project/                   # This a polyglot full stack Application Archite
 ├─ database/
 │  ├─ init/                     # SQL init scripts
 │  │  └─ init.sql
-│
+├── data/
+│   ├── firestore-schema.json           # Firestore collection schema
+│   ├── pubsub-topics.yaml              # Event topics for analytics and notifications
+│   └── bigquery-dataset.sql            # Analytical data model for user activity
+|
 ├─ redis-data/
 │
 ├─ frontend/
@@ -188,6 +174,12 @@ your-project/                   # This a polyglot full stack Application Archite
 |   ├─ hooks/                    # Shared frontend hooks
 |   └─ utils/                    # Common JS helpers  add this all too in basj scripting
 │
+├── backend/
+│   ├── auth-service/                   # Authentication & token issuance
+│   ├── catalog-service/                # Content catalog and metadata API
+│   ├── playback-service/               # Playback control and signed URL generation
+│   ├── Dockerfile                      # Multi-service container build
+│   └── docker-compose.yml              # Local orchestration for testing
 ├─ infrastructure/                              # 🏗️ DevOps + cloud + third-party
 │  ├─ terraform/
 │  │  ├─ main.tf
@@ -279,8 +271,9 @@ your-project/                   # This a polyglot full stack Application Archite
 │  │  ├─ kubernetes/eks-cluster-config/
 │  │  └─ ci-cd/github-actions/aws-deploy.yml
 │  │
-│  ├─ gcp/                                     # ☁️ GCP-specific IaC & configs
-│  │  ├─ terraform/
+│  ├─ gcp/                              # ☁️ GCP-specific IaC & configs
+├── infra/
+│   ├── terraform/                      # Infrastructure as Code (modularized)
 │  │  │  ├─ main.tf
 │  │  │  ├─ variables.tf
 │  │  │  ├─ backend.tf (GCS)
