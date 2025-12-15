@@ -92,7 +92,7 @@ All the diagrams and flows live in the `map/` directory.
 ### 📁 `map/` — CI/CD Diagrams & Documentation
 
 - [`map/Full-Cloud-CI-CD-Map.md`](map/Full-Cloud-CI-CD-Map.md)  
-  **Multi-Cloud CI/CD (Compute + Serverless)**  
+  **1. Multi-Cloud CI/CD (Compute + Serverless)**  
   - Covers **AWS + GCP + Azure** end-to-end  
   - Includes:
     - Shared Git workflow (GitHub / GitLab)
@@ -101,35 +101,8 @@ All the diagrams and flows live in the `map/` directory.
     - Serverless CI/CD (Lambda, Cloud Run, Azure Functions)
     - Third-party integrations (Auth0, Stripe, SendGrid, Datadog, Sentry, Segment, etc.)
    
-### 📝 Multi-cloud Directory Structure
-
-```bash
-Prodcution/
-└── map/
-    ├── Full-Cloud-CI-CD-Map.md   # Multi-cloud (AWS + GCP + Azure) CI/CD map
-    ├── aws-native-map.md         # AWS-native CI/CD
-    ├── gcp-native-map.md         # GCP-native CI/CD
-    └── azure-native-map.md       # Azure-native CI/CD
-
-
-            ┌────────────────────────────┐
-            │        CDN / API GW        │
-            └───────────┬────────────────┘
-                        │
-        ┌───────────────┼────────────────────┐
-        │               │                    │
-        v               v                    v
-   [EKS/GKE/AKS]   [Cloud Run/Lambda]   [Azure Functions]
-   (compute pods)  (serverless tasks)    (serverless hooks)
-        │               │                    │
-        ├──► Cloud SQL / RDS / SQL Azure
-        ├──► Redis / Memorystore / Cache
-        └──► S3 / GCS / Blob Storage (media)
-
-
-
 - [`map/aws-native-map.md`](map/aws-native-map.md)  
-  **AWS-Native CI/CD**  
+  **2. AWS-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / CodeCommit  
     - Build/Test: CodeBuild  
@@ -140,7 +113,7 @@ Prodcution/
     - Observability: CloudWatch + optional Datadog/Sentry hooks
 
 - [`map/gcp-native-map.md`](map/gcp-native-map.md)  
-  **GCP-Native CI/CD**  
+  **3. GCP-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / Cloud Source Repositories  
     - Build/Test: **Cloud Build**  
@@ -151,7 +124,7 @@ Prodcution/
     - Observability: Cloud Monitoring + Cloud Logging
 
 - [`map/azure-native-map.md`](map/azure-native-map.md)  
-  **Azure-Native CI/CD**  
+  **4. Azure-Native CI/CD**  
   - Typical flow:
     - Source: GitHub / Azure Repos  
     - Build/Test: **Azure Pipelines**  
@@ -162,9 +135,6 @@ Prodcution/
     - Observability: Azure Monitor + Log Analytics
 
 ---
-
-
-
 
 ```bash
 streaming-platform-gcp-architecture/
