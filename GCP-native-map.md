@@ -1,5 +1,22 @@
-```bash
+# ☁️ GCP-Native Full Architecture  
+### (Compute + Serverless + CI/CD + Infrastructure as Code)
 
+This repository defines a **cloud-native video streaming and analytics platform** hosted entirely on **Google Cloud Platform (GCP)**.  
+It combines **GKE (Kubernetes)**, **Cloud SQL**, **Pub/Sub**, **Dataflow**, and **BigQuery** to handle scalable compute,  
+streaming data, and analytics workloads — all managed through **Terraform**, **Ansible**, and **GCP-native CI/CD** tools  
+like **Cloud Build** and **Cloud Deploy**, with optional **GitHub** or **GitLab** integration.
+
+It supports:
+- 🧱 **Compute services** — containerized microservices deployed on **Google Kubernetes Engine (GKE)**
+- 🌀 **Serverless services** — event-driven workloads via **Cloud Run** and **Cloud Functions**
+- ⚙️ **Infrastructure as Code (IaC)** — provisioned and versioned through **Terraform**
+- 🔁 **Continuous Integration / Continuous Deployment** — powered by **Cloud Build** and **Cloud Deploy**
+- 🔒 **Security, Observability, and Data Analytics** — managed through **IAM**, **Secret Manager**, **Cloud Monitoring**, and **BigQuery / Dataflow**
+- ⚒️ **Configuration Management** — handled by **Ansible** for any GCE VM or bastion host
+
+---
+
+```bash
 your-project/
 ├─ docker-compose.yml                       # 🐳 Local dev stack (Postgres, Redis, mock services)
 ├─ .env                                     # Environment vars for local Docker
@@ -48,8 +65,8 @@ your-project/
 │
 ├─ infra/                                   # ☁️ Infrastructure & DevOps (Terraform, Ansible, CI/CD)
 │  ├─ terraform/                            # 🧱 Infrastructure as Code — creates ALL GCP resources
-│  │  ├─ envs/                              # Environment-specific infra (state split)
-│  │  │  ├─ dev/                            # Dev env — GCS backend: terraform.tfstate
+│  │  ├─ envs/
+│  │  │  ├─ dev/
 │  │  │  ├─ staging/
 │  │  │  └─ prod/
 │  │  │      ├─ main.tf                     # Call infra modules
@@ -57,7 +74,7 @@ your-project/
 │  │  │      ├─ backend.tf                  # GCS backend for TF state
 │  │  │      └─ terraform.tfvars            # Env vars (project_id, region, etc.)
 │  │  │
-│  │  └─ modules/                           # Modular reusable GCP infra components
+│  │  └─ modules/
 │  │     ├─ project/                        # Creates GCP project + enables APIs
 │  │     ├─ network/                        # Creates VPC, subnets, firewalls
 │  │     ├─ gke/                            # Creates GKE cluster + node pools
@@ -108,9 +125,6 @@ your-project/
 │  │  ├─ ingress/ingress.yaml               # GKE Ingress + HTTPS LB (Terraform references)
 │  │  ├─ helm/                              # Helm charts for each service
 │  │  └─ observability/                     # ConfigMaps for metrics, dashboards
-│  │
-│  │  # ☸️ Kubernetes is managed via Terraform (cluster) and Cloud Build/Deploy (apps)
-│  │  # ❌ Not managed by Ansible or GitLab directly — it’s GKE-native.
 │
 │  ├─ cicd/                                 # 🔁 CI/CD pipelines (Cloud Build / Cloud Deploy)
 │  │  ├─ cloud-build/
@@ -139,8 +153,6 @@ your-project/
 │  └─ monitoring-logging/                   # 📈 Observability setup
 │     ├─ cloud-monitoring/                  # Dashboards, alerts, uptime checks
 │     └─ cloud-logging/                     # Log sinks (to BigQuery, GCS)
-│
-│     # 👁️ All created via Terraform modules (monitoring/) — native Cloud Ops Suite.
 │
 └─ docs/                                   # 📚 Documentation
    ├─ ARCHITECTURE.md                      # High-level system + GCP architecture diagram
