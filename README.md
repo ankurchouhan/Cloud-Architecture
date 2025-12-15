@@ -100,6 +100,33 @@ All the diagrams and flows live in the `map/` directory.
     - Container CI/CD (EKS, GKE, AKS)
     - Serverless CI/CD (Lambda, Cloud Run, Azure Functions)
     - Third-party integrations (Auth0, Stripe, SendGrid, Datadog, Sentry, Segment, etc.)
+   
+### 📝 Multi-cloud Directory Structure
+
+```bash
+Prodcution/
+└── map/
+    ├── Full-Cloud-CI-CD-Map.md   # Multi-cloud (AWS + GCP + Azure) CI/CD map
+    ├── aws-native-map.md         # AWS-native CI/CD
+    ├── gcp-native-map.md         # GCP-native CI/CD
+    └── azure-native-map.md       # Azure-native CI/CD
+
+
+            ┌────────────────────────────┐
+            │        CDN / API GW        │
+            └───────────┬────────────────┘
+                        │
+        ┌───────────────┼────────────────────┐
+        │               │                    │
+        v               v                    v
+   [EKS/GKE/AKS]   [Cloud Run/Lambda]   [Azure Functions]
+   (compute pods)  (serverless tasks)    (serverless hooks)
+        │               │                    │
+        ├──► Cloud SQL / RDS / SQL Azure
+        ├──► Redis / Memorystore / Cache
+        └──► S3 / GCS / Blob Storage (media)
+
+
 
 - [`map/aws-native-map.md`](map/aws-native-map.md)  
   **AWS-Native CI/CD**  
@@ -136,30 +163,6 @@ All the diagrams and flows live in the `map/` directory.
 
 ---
 
-### 📝 Directory Structure
-
-```bash
-your-project/
-└── map/
-    ├── Full-Cloud-CI-CD-Map.md   # Multi-cloud (AWS + GCP + Azure) CI/CD map
-    ├── aws-native-map.md         # AWS-native CI/CD
-    ├── gcp-native-map.md         # GCP-native CI/CD
-    └── azure-native-map.md       # Azure-native CI/CD
-
-
-            ┌────────────────────────────┐
-            │        CDN / API GW        │
-            └───────────┬────────────────┘
-                        │
-        ┌───────────────┼────────────────────┐
-        │               │                    │
-        v               v                    v
-   [EKS/GKE/AKS]   [Cloud Run/Lambda]   [Azure Functions]
-   (compute pods)  (serverless tasks)    (serverless hooks)
-        │               │                    │
-        ├──► Cloud SQL / RDS / SQL Azure
-        ├──► Redis / Memorystore / Cache
-        └──► S3 / GCS / Blob Storage (media)
 
 
 
