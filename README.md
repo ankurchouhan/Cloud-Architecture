@@ -113,12 +113,10 @@ streaming-platform-gcp-architecture/
     ├── recommendation_model.ipynb      # Collaborative filtering ML demo
     └── analytics_demo.ipynb            # Audience metrics and engagement trends
 
+## Frontend ; React JS, CSS, Tailwind, Depends on your whatever you want to use.
+## Backend  ; (GO) Lang, Python, Node Js & Java, Main backend systems design with several languages
 
-
-
-
-
-your-project/
+your-project/                   # This a polyglot full stack Application Architechture Real-time
 ├─ docker-compose.yml
 ├─ .env
 ├─ .gitignore
