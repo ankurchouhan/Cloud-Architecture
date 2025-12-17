@@ -114,56 +114,98 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    User[Global Users]
+    %% USERS
+    Users[🌍 Global Users]
 
-    CDN[Global CDN]
-    WAF[WAF + DDoS]
-    DNS[Route53 / Geo DNS]
+    %% EDGE
+    CDN[🌐 Global CDN<br/>CloudFront / Cloud CDN / Front Door]
+    WAF[🛡️ WAF + DDoS]
+    DNS[🌍 Geo / Latency DNS]
 
-    ALB1[ALB us-east-1]
-    ALB2[ALB eu-west-1]
+    %% REGIONS
+    subgraph USE1[🇺🇸 AWS us-east-1 (PRIMARY)]
+        ALB1[ALB us-east-1]
+        ECS1[EKS / ECS Cluster]
 
-    subgraph Compute
-        EKS[EKS]
-        GKE[GKE]
-        AKS[AKS]
+        Auth1[Auth Service]
+        Content1[Content Service]
+        Billing1[Billing Service]
+
+        DB1[(Aurora Writer)]
+        Cache1[(Redis)]
+        S31[(S3 Bucket)]
     end
 
-    Auth[Auth Service]
-    Content[Content Service]
-    Billing[Billing Service]
+    subgraph EUW1[🇪🇺 AWS eu-west-1 (SECONDARY)]
+        ALB2[ALB eu-west-1]
+        ECS2[EKS / ECS Cluster]
 
-    SQL[Managed SQL]
-    Cache[Redis]
-    Storage[Object Storage]
+        Auth2[Auth Service]
+        Content2[Content Service]
+        Billing2[Billing Service]
 
-    Stream[Event Streaming]
-    Analytics[Analytics]
-    ML[ML Platforms]
+        DB2[(Aurora Read Replica)]
+        Cache2[(Redis)]
+        S32[(S3 Bucket)]
+    end
 
-    CI[CI/CD]
-    Registry[Registry]
+    %% ANALYTICS
+    Stream[📡 Event Streaming<br/>Kinesis / PubSub / Event Hubs]
+    Analytics[📊 Analytics Warehouse]
+    ML[🧠 ML / Recommendations]
+
+    %% CI/CD
+    Dev[👨‍💻 Developer]
+    Git[GitHub]
+    CI[CI/CD Pipelines]
+    Registry[Container Registry]
     IaC[Terraform]
-    Obs[Observability]
-    FinOps[FinOps]
 
-    User --> CDN --> WAF --> DNS
-    DNS --> ALB1 --> Compute
-    DNS --> ALB2 --> Compute
+    %% OBS
+    Obs[📈 Observability]
+    FinOps[💰 FinOps]
 
-    Compute --> Auth --> SQL
-    Compute --> Billing --> SQL
-    Compute --> Content --> Storage
-    Compute --> Cache
+    %% TRAFFIC FLOW
+    Users --> CDN --> WAF --> DNS
 
-    Content --> Stream --> Analytics --> ML
+    DNS -->|Low latency| ALB1
+    DNS -->|Failover| ALB2
 
-    CI --> Registry --> Compute
-    IaC --> Compute
+    ALB1 --> ECS1
+    ALB2 --> ECS2
 
-    Compute --> Obs
+    ECS1 --> Auth1 --> DB1
+    ECS1 --> Billing1 --> DB1
+    ECS1 --> Content1 --> S31
+    ECS1 --> Cache1
+
+    ECS2 --> Auth2 --> DB2
+    ECS2 --> Billing2 --> DB2
+    ECS2 --> Content2 --> S32
+    ECS2 --> Cache2
+
+    %% REPLICATION
+    DB1 -->|Async Replication| DB2
+    S31 -->|Cross-Region Replication| S32
+
+    %% STREAMING
+    Content1 --> Stream
+    Content2 --> Stream
+    Stream --> Analytics --> ML
+
+    %% CI/CD FLOW
+    Dev --> Git --> CI
+    CI --> Registry --> ECS1
+    CI --> Registry --> ECS2
+    IaC --> ECS1
+    IaC --> ECS2
+
+    %% OBS & COST
+    ECS1 --> Obs
+    ECS2 --> Obs
     Analytics --> Obs
-    FinOps --> Compute
+    FinOps --> ECS1
+    FinOps --> ECS2
 ```
 
 ---
