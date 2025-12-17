@@ -11,112 +11,71 @@
 
 This repository showcases a **production-grade, cost-optimized streaming platform** designed for **AWS, GCP, and Azure**.
 
-It demonstrates how to build a **real-time, video-on-demand and analytics system** using:
-
-- Containerized compute
-- Serverless workloads
-- Event-driven data pipelines
-- Fully automated CI/CD
-- FinOps-first cost controls
+It demonstrates how to build a **real-time, video-on-demand and analytics system** using containers, serverless workloads, event-driven pipelines, and fully automated CI/CD.
 
 **One repository. Three clouds. Full automation.**
 
 ---
 
-## 🧭 Target Use Cases
+## 📐 Unified Multi-Cloud Architecture Diagram
 
-- Streaming & media platforms  
-- SaaS products with global traffic  
-- FinTech & regulated systems  
-- Gaming & real-time analytics  
-- Enterprise multi-cloud strategies  
-
----
-
-## ✨ Core Capabilities
-
-- 🌍 Multi-cloud (AWS + GCP + Azure)
-- 🧱 Kubernetes compute (EKS / GKE / AKS)
-- 🌀 Serverless processing (Lambda / Cloud Run / Functions)
-- 📊 Real-time analytics (Pub/Sub, Kinesis, Event Hubs)
-- 🔒 IAM, secrets, zero-trust networking
-- ⚙️ Terraform + Ansible automation
-- 🔄 CI/CD (GitHub Actions, Cloud Build, CodePipeline, Azure DevOps)
-- 💰 FinOps-driven cost optimization
-- 🧠 Observability-first design
-
----
-
-## 📐 Unified Architecture Diagram (ALL SYSTEMS)
+> ✅ Fixed Mermaid syntax — renders correctly on GitHub
 
 ```mermaid
 flowchart TB
-    %% USERS
     User[Global Users]
 
-    %% EDGE
-    CDN[Multi-Cloud CDN<br/>CloudFront | Cloud CDN | Front Door]
+    CDN[Multi-Cloud CDN<br/>CloudFront / Cloud CDN / Front Door]
     WAF[WAF + DDoS Protection]
 
-    %% API LAYER
-    API[API Gateway<br/>Cloud Run | Lambda | Functions]
+    API[API Layer<br/>Lambda / Cloud Run / Functions]
 
-    %% KUBERNETES
-    subgraph Kubernetes
-        GKE[GKE]
-        EKS[EKS]
-        AKS[AKS]
+    subgraph Kubernetes_Compute
+        GKE[GKE Cluster]
+        EKS[EKS Cluster]
+        AKS[AKS Cluster]
     end
 
-    %% MICROSERVICES
     Auth[Auth Service]
     Content[Content Service]
     Billing[Billing Service]
 
-    %% DATA
-    SQL[Cloud SQL | RDS | Azure SQL]
-    Cache[Redis]
-    Storage[Object Storage<br/>S3 | GCS | Blob]
+    SQL[Managed SQL<br/>Cloud SQL / RDS / Azure SQL]
+    Cache[Redis Cache]
+    Storage[Object Storage<br/>S3 / GCS / Blob]
 
-    %% STREAMING
-    Stream[Pub/Sub | Kinesis | Event Hubs]
-    Analytics[BigQuery | Redshift | Synapse]
+    Stream[Event Streaming<br/>PubSub / Kinesis / Event Hubs]
+    Analytics[Analytics<br/>BigQuery / Redshift / Synapse]
+    ML[ML Platforms<br/>Vertex AI / SageMaker / Azure ML]
 
-    %% ML
-    ML[Vertex AI | SageMaker | Azure ML]
-
-    %% CI/CD
     Dev[Developer]
     Git[GitHub]
-    CI[CI/CD Pipelines]
-    Registry[Container Registries]
-    Deploy[Helm / Terraform]
+    CI[CI CD Pipelines]
+    Registry[Container Registry]
+    Deploy[Terraform + Helm]
 
-    %% OBS
-    Obs[Monitoring & Logging<br/>CloudWatch | Cloud Monitoring | Azure Monitor]
+    Obs[Monitoring<br/>CloudWatch / Cloud Monitoring / Azure Monitor]
+    FinOps[Cost Optimization<br/>Budgets + Autoscaling]
 
-    %% COST
-    FinOps[Cost Optimization<br/>Budgets + Automation]
-
-    %% FLOWS
     User --> CDN --> WAF --> API
-    API --> Kubernetes
-    Kubernetes --> Auth
-    Kubernetes --> Content
-    Kubernetes --> Billing
+    API --> Kubernetes_Compute
+
+    Kubernetes_Compute --> Auth
+    Kubernetes_Compute --> Content
+    Kubernetes_Compute --> Billing
 
     Auth --> SQL
-    Content --> Storage
     Billing --> SQL
-    Kubernetes --> Cache
+    Content --> Storage
+    Kubernetes_Compute --> Cache
 
     Content --> Stream --> Analytics --> ML
 
-    Dev --> Git --> CI --> Registry --> Deploy --> Kubernetes
+    Dev --> Git --> CI --> Registry --> Deploy --> Kubernetes_Compute
 
-    Kubernetes --> Obs
+    Kubernetes_Compute --> Obs
     Analytics --> Obs
-    FinOps --> Kubernetes
+    FinOps --> Kubernetes_Compute
     FinOps --> Analytics
 ```
 
@@ -130,7 +89,7 @@ flowchart TB
 | API | Stateless endpoints | Lambda, Cloud Run, Functions |
 | Compute | Microservices | EKS, GKE, AKS |
 | Data | Storage & cache | SQL, Redis, Object Storage |
-| Analytics | Streaming pipelines | Pub/Sub, Kinesis, Event Hubs |
+| Analytics | Streaming pipelines | PubSub, Kinesis, Event Hubs |
 | ML | Recommendations | Vertex AI, SageMaker |
 | Observability | Metrics & logs | Prometheus, Grafana, ELK |
 | Automation | IaC & config | Terraform, Ansible |
@@ -144,20 +103,20 @@ flowchart TB
 1. Developer pushes code
 2. CI builds & tests
 3. Images pushed to registry
-4. Terraform provisions infra
+4. Terraform provisions infrastructure
 5. Helm deploys services
-6. Canary / rolling updates
+6. Canary or rolling updates
 7. Metrics validate rollout
 
 ---
 
 ## 💰 Cost Optimization Strategy
 
-- Spot / preemptible nodes
+- Spot and preemptible nodes
 - Aggressive autoscaling
-- Storage tier lifecycle rules
-- Idle resource cleanup
-- Budget alerts & dashboards
+- Storage lifecycle policies
+- Automated cleanup of idle resources
+- Budget alerts and dashboards
 
 Typical savings: **30–70%**
 
@@ -165,10 +124,10 @@ Typical savings: **30–70%**
 
 ## 🧪 Chaos Engineering
 
-- Kill pods & services
+- Kill pods and services
 - Disable zones
 - Inject latency
-- Force DB failovers
+- Force database failovers
 - Validate SLO recovery
 
 ---
@@ -199,12 +158,6 @@ streaming-platform/
 📧 ankurchouhan@yfsentertainment.com  
 🌐 https://www.yfsentertainment.com
 
-For:
-- Enterprise consulting
-- Custom cloud architecture
-- Multi-cloud implementation
-- Cost optimization & FinOps
-
 ---
 
 ## ⚖️ License & Attribution
@@ -213,3 +166,4 @@ MIT License © 2025 Ankur Chouhan / Alien LLC
 
 Attribution required for commercial or production use.
 Unauthorized redistribution or misrepresentation is prohibited.
+
