@@ -114,58 +114,51 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    %% USERS
-    Users[🌍 Global Users]
+    Users[Global Users]
 
-    %% EDGE
-    CDN[🌐 Global CDN<br/>CloudFront / Cloud CDN / Front Door]
-    WAF[🛡️ WAF + DDoS]
-    DNS[🌍 Geo / Latency DNS]
+    CDN[Global CDN]
+    WAF[WAF and DDoS Protection]
+    DNS[Geo and Latency DNS]
 
-    %% REGIONS
-    subgraph USE1[🇺🇸 AWS us-east-1 (PRIMARY)]
-        ALB1[ALB us-east-1]
-        ECS1[EKS / ECS Cluster]
+    subgraph USE1[AWS us-east-1 PRIMARY]
+        ALB1[Public ALB]
+        ECS1[Compute Cluster]
 
         Auth1[Auth Service]
         Content1[Content Service]
         Billing1[Billing Service]
 
-        DB1[(Aurora Writer)]
-        Cache1[(Redis)]
-        S31[(S3 Bucket)]
+        DB1[(Primary Database)]
+        Cache1[(Redis Cache)]
+        S31[(Object Storage)]
     end
 
-    subgraph EUW1[🇪🇺 AWS eu-west-1 (SECONDARY)]
-        ALB2[ALB eu-west-1]
-        ECS2[EKS / ECS Cluster]
+    subgraph EUW1[AWS eu-west-1 SECONDARY]
+        ALB2[Public ALB]
+        ECS2[Compute Cluster]
 
         Auth2[Auth Service]
         Content2[Content Service]
         Billing2[Billing Service]
 
-        DB2[(Aurora Read Replica)]
-        Cache2[(Redis)]
-        S32[(S3 Bucket)]
+        DB2[(Read Replica Database)]
+        Cache2[(Redis Cache)]
+        S32[(Object Storage)]
     end
 
-    %% ANALYTICS
-    Stream[📡 Event Streaming<br/>Kinesis / PubSub / Event Hubs]
-    Analytics[📊 Analytics Warehouse]
-    ML[🧠 ML / Recommendations]
+    Stream[Event Streaming]
+    Analytics[Analytics Warehouse]
+    ML[ML Platform]
 
-    %% CI/CD
-    Dev[👨‍💻 Developer]
+    Dev[Developer]
     Git[GitHub]
-    CI[CI/CD Pipelines]
+    CI[CI CD Pipeline]
     Registry[Container Registry]
     IaC[Terraform]
 
-    %% OBS
-    Obs[📈 Observability]
-    FinOps[💰 FinOps]
+    Obs[Observability]
+    FinOps[Cost Management]
 
-    %% TRAFFIC FLOW
     Users --> CDN --> WAF --> DNS
 
     DNS -->|Low latency| ALB1
@@ -184,23 +177,18 @@ flowchart TB
     ECS2 --> Content2 --> S32
     ECS2 --> Cache2
 
-    %% REPLICATION
-    DB1 -->|Async Replication| DB2
-    S31 -->|Cross-Region Replication| S32
+    DB1 -->|Async replication| DB2
+    S31 -->|Cross region replication| S32
 
-    %% STREAMING
     Content1 --> Stream
     Content2 --> Stream
     Stream --> Analytics --> ML
 
-    %% CI/CD FLOW
-    Dev --> Git --> CI
-    CI --> Registry --> ECS1
-    CI --> Registry --> ECS2
+    Dev --> Git --> CI --> Registry --> ECS1
+    Dev --> Git --> CI --> Registry --> ECS2
     IaC --> ECS1
     IaC --> ECS2
 
-    %% OBS & COST
     ECS1 --> Obs
     ECS2 --> Obs
     Analytics --> Obs
